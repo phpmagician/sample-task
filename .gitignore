@@ -64,7 +64,7 @@ test/coverage/
 modules/public/
 modules/views/
 /public/build/
-/packages/contrib/
+#/packages/contrib/
 /packages/**/**/public/assets/lib
 
 

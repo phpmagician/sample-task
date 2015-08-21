@@ -1,0 +1,45 @@
+<div class="comments-container">
+	<div class="load-more-comment" ng-if="loadcomment">
+		<i class="glyphicon glyphicon-comment"></i>
+		<a data-ng-if="commentEditable" data-ng-click="findComments(parent,false);">View more comments</a>
+	</div>
+	<div data-ng-repeat="comment in parent.comments | orderBy: '+created' " class="comment-items" >
+		<div class="comment">
+<!-- 			<div class="post-image">
+				<img ng-src ="{{comment.user.picture}}">
+			</div> -->
+			<div>
+				<span ng-if="comment.user._id" class="comment-author"><strong>{{comment.user.name}}<strong></span>
+				<span  ng-if="!comment.user._id"  class="comment-author"><strong>Annomous user<strong></span>
+				<span class="comment-time-ago" time-ago from-time="{{comment.created}}"></span>
+				<div class="comment-body-container">
+					<span data-ng-if="!comment.editable" class="comment-body" ng-bind-html="comment.body | newlines | parseUrlFilter:'_self' | emoticonize">{{comment.body}}</span>
+					<div data-ng-if="comment.editable" data-ng-show="global.user._id == comment.user._id || isAdmin">
+						<form class="form-horizontal center-block comment-{{parent._id}}"  data-ng-submit="update(comment)">
+							<p class="input-group">
+								<span ng-class="class">
+									<textarea name="comment" msd-elastic="\n" cols="30" rows="1" data-ng-model="comment.body" class="form-control" required></textarea>
+								</span>
+								<input type="submit" class="btn-comment-edit" value="Done Editing"/>
+							</p>
+						</form>
+					</div>
+					
+
+				
+					<span class="comment-remove" data-ng-show="(global.user._id == comment.user._id || isAdmin) && global.user._id">
+						<a class="comment-button" data-ng-click="remove(comment);">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+						<a class="comment-button" data-ng-if="(commentEditable || isAdmin ) && global.user._id" data-ng-click="editComment(comment);">
+							<i class="glyphicon glyphicon-edit"></i>
+						</a>
+					</span>
+          <!-- 					<span ng-include="'likes/views/like-button.html'" data-ng-controller="LikesController" data-ng-init="findLikes('comment', comment)" /> -->
+        </div> <span ng-if="comment.status!='1'">(Status: pending)</span>
+      </div>
+    </div>
+  </div>
+
+  <span>{{msg}}</span>
+</div>
