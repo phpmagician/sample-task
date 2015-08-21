@@ -1,3 +1,6 @@
 {
-    "dependencies": {}
+    "dependencies": {},
+    "anonymizedData": true,
+    "name": "sample_task",
+    "id": "55d725035169909b621c055d"
 }
