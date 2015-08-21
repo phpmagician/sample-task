@@ -106,10 +106,20 @@ module.exports = function(Articles) {
          */
         show: function(req, res) {
 
+
+            var name = null;
+
+            if(req.user){
+                name = req.user.name;
+            }else{
+
+                name = 'Annonomous Iser';
+            }
+
             Articles.events.publish({
                 action: 'view',
                 user: {
-                    name: req.user.name
+                    name: name
                 },
                 name: req.article.title,
                 url: config.hostname + '/articles/' + req.article._id

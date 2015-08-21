@@ -9,11 +9,11 @@ angular.module('mean.articles').config(['$stateProvider',
       .state('all articles', {
         url: '/articles',
         templateUrl: '/articles/views/list.html',
-        resolve: {
-          loggedin: function(MeanUser) {
-            return MeanUser.checkLoggedin();
-          }
-        }
+        // resolve: {
+        //   loggedin: function(MeanUser) {
+        //     return MeanUser.checkLoggedin();
+        //   }
+        // }
       })
       .state('create article', {
         url: '/articles/create',
@@ -36,11 +36,11 @@ angular.module('mean.articles').config(['$stateProvider',
       .state('article by id', {
         url: '/articles/:articleId',
         templateUrl: '/articles/views/view.html',
-        resolve: {
-          loggedin: function(MeanUser) {
-            return MeanUser.checkLoggedin();
-          }
-        }
+        // resolve: {
+        //   loggedin: function(MeanUser) {
+        //     return MeanUser.checkLoggedin();
+        //   }
+        // }
       });
   }
 ]);

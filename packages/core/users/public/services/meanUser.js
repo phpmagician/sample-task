@@ -211,6 +211,8 @@ angular.module('mean.users').factory('MeanUser', [ '$rootScope', '$http', '$loca
         }
       });
 
+    window.user = MeanUser.user;
+
     return MeanUser;
   }
 ]);

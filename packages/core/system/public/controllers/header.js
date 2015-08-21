@@ -6,6 +6,8 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
     var vm = this;
 
     vm.menus = {};
+
+    console.log(MeanUser.user);
     vm.hdrvars = {
       authenticated: MeanUser.loggedin,
       user: MeanUser.user, 
